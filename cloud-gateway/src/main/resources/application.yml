@@ -11,11 +11,11 @@ spring:
         - id: packaging-service
           uri: lb://PACKAGING-SERVICE
           predicates:
-            - Path=/api/**
-        - id: email-notification-service
-          uri: lb://EMAIL-NOTIFICATION-SERVICE
+            - Path=/api/pack**
+        - id: component-service
+          uri: lb://COMPONENT-SERVICE
           predicates:
-            - Path=/email/**
+            - Path=/api/component**
             
     
 eureka:
