@@ -23,13 +23,16 @@ public class ComponentService {
 	}
 	
 	public List<Components> getComponent() {
-		// TODO Auto-generated method stub
-		return componentRepository.findAll();
+		List<Components> all = componentRepository.findAll();
+		//all.
+		return all;
 	}
-
-	public Components getComponentsById(String id) {
-		System.out.println(componentRepository.findById(id).get());
-		return componentRepository.findById(id).get();
-	}
+	
+	
+	
+//	public Components getComponentsById(String id) {
+//		System.out.println(componentRepository.findById(id).get());
+//		return componentRepository.findById(id).get();
+//	}
 
 }

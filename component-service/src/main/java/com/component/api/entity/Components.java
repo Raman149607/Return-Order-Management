@@ -1,5 +1,6 @@
 package com.component.api.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,8 +10,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Components {
@@ -24,6 +30,23 @@ public class Components {
 	private long userContactNumber;
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<DefectiveComponentDetail> defectiveComponentDetail;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd")
+	@Temporal(TemporalType.DATE)
+	@Column(nullable = false)
+	private Date dateOfArrival;
+
+	public Date getDateOfArrival() {
+		return dateOfArrival;
+	}
+
+	public void setDateOfArrival(Date dateOfArrival) {
+		this.dateOfArrival = dateOfArrival;
+	}
+
+	@PrePersist
+	private void onCreate() {
+		dateOfArrival = new Date();
+	}
 
 	public String getId() {
 		return id;
@@ -56,7 +79,5 @@ public class Components {
 	public void setDefectiveComponentDetail(List<DefectiveComponentDetail> defectiveComponentDetail) {
 		this.defectiveComponentDetail = defectiveComponentDetail;
 	}
-
-	
 
 }

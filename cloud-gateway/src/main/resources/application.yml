@@ -15,7 +15,7 @@ spring:
         - id: component-service
           uri: lb://COMPONENT-SERVICE
           predicates:
-            - Path=/api/component**
+            - Path=/api/**
             
     
 eureka:

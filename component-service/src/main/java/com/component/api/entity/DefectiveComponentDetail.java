@@ -13,7 +13,7 @@ public class DefectiveComponentDetail {
 	@Enumerated(EnumType.STRING)
 	private ComponentType componentType;
 	private String componentName;
-	int quantity;
+	private int quantity;
 	
 	
 
